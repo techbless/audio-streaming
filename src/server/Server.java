@@ -2,6 +2,7 @@ package server;
 
 import javax.sound.sampled.*;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -42,29 +43,39 @@ public class Server {
 
         @Override
         public void run() {
-            try {
-                microphone = AudioSystem.getTargetDataLine(format);
-                DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
-                microphone = (TargetDataLine) AudioSystem.getLine(info);
-                microphone.open(format);
+                int dsize;
                 byte[] data = new byte[1024];
-                int dsize = 0;
-                microphone.start();
-                while (true) {
-                    dsize = microphone.read(data, 0, 1024);
 
-                    int size = listeners.size();
-
-                    for(int i = 0; i < size; i++) {
-                        lstn = listeners.get(i);
-                        lstn.write(data, 0, dsize);
-                    }
-                    //something code that broadcast
+                try {
+                    microphone = AudioSystem.getTargetDataLine(format);
+                    DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
+                    microphone = (TargetDataLine) AudioSystem.getLine(info);
+                    microphone.open(format);
+                    data = new byte[1024];
+                    microphone.start();
+                } catch(Exception e) {
+                    e.printStackTrace();
                 }
 
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+                while (true) {
+                    try {
+                        dsize = microphone.read(data, 0, 1024);
+
+                        int size = listeners.size();
+
+                        for (int i = 0; i < size; i++) {
+                            lstn = listeners.get(i);
+                            lstn.write(data, 0, dsize);
+                        }
+                    } catch(IOException e) {
+                        try {
+                            lstn.close();
+                            listeners.remove(lstn);
+                        } catch(IOException f) {
+                            f.printStackTrace();
+                        }
+                    }
+                }
 
 
         }

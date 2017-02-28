@@ -18,7 +18,7 @@ public class Client {
             format = new AudioFormat(192000.0f, 16, 2, true, false);
             info = new DataLine.Info(SourceDataLine.class, format);
             ByteArrayOutputStream out = new ByteArrayOutputStream();
-            socket = new Socket("localhost", 10001);
+            socket = new Socket("192.168.0.3", 10001);
             dis = new DataInputStream(socket.getInputStream());
 
             int dsize = 0;
