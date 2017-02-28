@@ -3,18 +3,18 @@
 **Please follow bellow instruction to make your live stream up**
 
 
-**What is this repository for?**
+#What is this repository for?
 
 `This repository is to do live audio streaming.`
 
-**which do i use?**
+#which do i use?
 
 `If you are broadcaster, Use Server.`
 
 `If you are listener, Use Client.`
 
 
-**How do i get set up?**
+#How do i get set up?
 
 `If you are broadcaster, Just make server run.`
 
@@ -26,7 +26,7 @@
 
 `3. Just make client run.`
 
-**I have some issue**
+#I have some issue
 
 `Please feel free to contact me`
 
