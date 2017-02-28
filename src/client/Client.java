@@ -3,7 +3,6 @@ package client;
 import javax.sound.sampled.*;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
-import java.io.IOException;
 import java.net.Socket;
 
 public class Client {
@@ -18,7 +17,7 @@ public class Client {
             format = new AudioFormat(192000.0f, 16, 2, true, false);
             info = new DataLine.Info(SourceDataLine.class, format);
             ByteArrayOutputStream out = new ByteArrayOutputStream();
-            socket = new Socket("192.168.0.3", 10001);
+            socket = new Socket("192.168.0.5", 10001);
             dis = new DataInputStream(socket.getInputStream());
 
             int dsize = 0;
@@ -30,7 +29,6 @@ public class Client {
 
             while(true) {
                 dsize = dis.read(data);
-                System.out.println(data);
                 speakers.write(data, 0, dsize);
             }
         } catch(Exception e) {

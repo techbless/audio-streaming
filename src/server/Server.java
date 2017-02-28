@@ -20,12 +20,15 @@ public class Server {
     private void start() {
         try {
             serverSocket = new ServerSocket(10001);
+            System.out.println("Server Started");
             new broadCast().start();
 
             while (true) {
                 listener = serverSocket.accept();
                 dos = new DataOutputStream(listener.getOutputStream());
                 listeners.add(dos);
+                System.out.println("Connected from [" + listener.getPort() + " : " + listener.getInetAddress() + "]");
+                System.out.println("Current listener : " + listeners.size());
             }
         } catch(Exception e) {
             e.printStackTrace();
@@ -71,6 +74,8 @@ public class Server {
                         try {
                             lstn.close();
                             listeners.remove(lstn);
+                            System.out.println("Someone Disconnected");
+                            System.out.println("Current listener : " + listeners.size());
                         } catch(IOException f) {
                             f.printStackTrace();
                         }
