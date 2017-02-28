@@ -1,6 +1,6 @@
 # AudioStreaming
 
-**Please follow bellow instructions to make your live stream up**
+**Please follow instructions below to make your live stream up**
 
 
 #What is this repository for?
