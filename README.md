@@ -2,6 +2,9 @@
 
 **Please follow instructions below to make your live stream up**
 
+## Status
+
+[![Travis](https://img.shields.io/jenkins/s/https/jenkins.qa.ubuntu.com/view/Precise/view/All%20Precise/job/precise-desktop-amd64_default.svg)]() [![apm](https://img.shields.io/apm/l/vim-mode.svg)]()
 
 ## What is this repository for?
 
