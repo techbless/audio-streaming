@@ -30,5 +30,5 @@
 ## I have some issue
 
     Please feel free to contact me
-    e-mail : hw@yunbin.kr
+    e-mail : yunbin@hansung.ac.kr
 
